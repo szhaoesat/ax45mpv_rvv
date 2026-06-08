@@ -1,0 +1,290 @@
+
+`ifndef HDL_VERILOG_RVV_DESIGN_RVV_SVH
+`include "rvv_backend.svh"
+`endif
+
+module rvv_backend_alu_unit
+(
+  clk,
+  rst_n,
+  alu_uop_valid,
+  alu_uop,
+  pop_rs,
+  result_valid,
+  result,
+  result_ready,
+  trap_flush_rvv
+);
+
+  parameter               CMP_SUPPORT = 1'b0;
+//
+// interface signals
+//
+  // global signal
+  input   logic           clk;
+  input   logic           rst_n;
+
+  // ALU RS handshake signals
+  input   logic           alu_uop_valid;
+  input   ALU_RS_t        alu_uop;
+  output  logic           pop_rs;
+
+  // ALU send result signals to ROB
+  output  logic           result_valid;
+  output  PU2ROB_t        result;
+  input   logic           result_ready;
+
+  // trap-flush
+  input   logic           trap_flush_rvv; 
+
+//
+// internal signals
+//   
+  logic                   result_valid_addsub_p0;
+  PIPE_DATA_t             result_addsub_p0;
+  logic                   result_valid_shift_p0;
+  PU2ROB_t                result_shift_p0;
+  logic                   result_valid_mask_p0;
+  PU2ROB_t                result_mask_p0;
+  logic                   result_valid_other_p0;
+  PU2ROB_t                result_other_p0;
+  logic                   result_valid_p1;
+  PU2ROB_t                result_p1;
+  // pipeline
+  logic                   alu_uop_valid_p1_en;
+  logic                   alu_uop_valid_p1_in;
+  logic                   alu_uop_valid_p1;
+  logic                   alu_uop_p1_en;
+  PIPE_DATA_t             alu_uop_p1_in;
+  PIPE_DATA_t             alu_uop_p1;
+  // EML signals
+  logic                   result_valid_eml;
+  PIPE_DATA_t             result_eml;
+  logic                   pop_rs_eml;
+  // Standard ALU mux temporaries (module scope for lint portability)
+  logic                   std_pop_rs;
+  logic                   std_result_valid;
+  PU2ROB_t                std_result;
+
+//
+// instance
+//
+  rvv_backend_alu_unit_addsub #(
+    .CMP_SUPPORT          (CMP_SUPPORT)
+  ) u_alu_addsub (
+    .alu_uop_valid        (alu_uop_valid),
+    .alu_uop              (alu_uop),
+    .result_valid         (result_valid_addsub_p0),
+    .result               (result_addsub_p0)
+  );
+
+  rvv_backend_alu_unit_shift 
+  u_alu_shift (
+    .alu_uop_valid        (alu_uop_valid),
+    .alu_uop              (alu_uop),
+    .result_valid         (result_valid_shift_p0),
+    .result               (result_shift_p0)
+  );
+  
+  rvv_backend_alu_unit_mask 
+  u_alu_mask ( 
+    .alu_uop_valid        (alu_uop_valid),
+    .alu_uop              (alu_uop),
+    .result_valid         (result_valid_mask_p0),
+    .result               (result_mask_p0)
+  );
+
+  rvv_backend_alu_unit_other 
+  u_alu_other (
+    .alu_uop_valid        (alu_uop_valid),
+    .alu_uop              (alu_uop),
+    .result_valid         (result_valid_other_p0),
+    .result               (result_other_p0)
+  );
+
+  rvv_backend_alu_unit_eml
+  u_alu_eml (
+    .clk                  (clk),
+    .rst_n                (rst_n),
+    .alu_uop_valid        (alu_uop_valid),
+    .alu_uop              (alu_uop),
+    .pop_rs               (pop_rs_eml),
+    .result_valid         (result_valid_eml),
+    .result               (result_eml),
+    .result_ready         (result_ready),
+    .trap_flush_rvv       (trap_flush_rvv)
+  );
+
+// pipeline
+  // alu_uop_valid_p1
+  always_comb begin
+    case({result_valid_p1,(result_valid_addsub_p0|result_valid_shift_p0|result_valid_mask_p0|result_valid_other_p0)})
+      2'b01: begin
+        alu_uop_valid_p1_en = result_valid_addsub_p0;
+        alu_uop_valid_p1_in = 1'b1;
+        alu_uop_p1_en       = result_valid_addsub_p0;
+      end
+      2'b11: begin
+        alu_uop_valid_p1_en = 1'b0;
+        alu_uop_valid_p1_in = 1'b1;
+        alu_uop_p1_en       = result_ready;
+      end
+      2'b10: begin
+        alu_uop_valid_p1_en = result_ready;
+        alu_uop_valid_p1_in = 1'b0;
+        alu_uop_p1_en       = 1'b0;
+      end
+      default: begin  // 2'b00
+        alu_uop_valid_p1_en = 1'b0;
+        alu_uop_valid_p1_in = 1'b0;
+        alu_uop_p1_en       = 1'b0;
+      end
+    endcase
+  end
+  
+  always_comb begin
+    alu_uop_p1_in = 'b0;
+
+    case(1'b1)
+      result_valid_addsub_p0: begin 
+        alu_uop_p1_in                     = result_addsub_p0;
+      end
+      result_valid_shift_p0: begin        
+      `ifdef TB_SUPPORT 
+        alu_uop_p1_in.uop_pc              = result_shift_p0.uop_pc;
+      `endif
+        alu_uop_p1_in.rob_entry           = result_shift_p0.rob_entry;
+        alu_uop_p1_in.w_data              = result_shift_p0.w_data;
+        alu_uop_p1_in.w_valid             = result_shift_p0.w_valid;
+        alu_uop_p1_in.vsat_cout.vsaturate = result_shift_p0.vsaturate;
+      end
+      result_valid_other_p0: begin
+      `ifdef TB_SUPPORT 
+        alu_uop_p1_in.uop_pc              = result_other_p0.uop_pc;
+      `endif
+        alu_uop_p1_in.rob_entry           = result_other_p0.rob_entry;
+        alu_uop_p1_in.w_data              = result_other_p0.w_data;
+        alu_uop_p1_in.w_valid             = result_other_p0.w_valid;
+        alu_uop_p1_in.vsat_cout.vsaturate = result_other_p0.vsaturate;
+      end
+      result_valid_mask_p0: begin
+      `ifdef TB_SUPPORT 
+        alu_uop_p1_in.uop_pc              = result_mask_p0.uop_pc;
+      `endif
+        alu_uop_p1_in.rob_entry           = result_mask_p0.rob_entry;
+        alu_uop_p1_in.w_data              = result_mask_p0.w_data;
+        alu_uop_p1_in.w_valid             = result_mask_p0.w_valid;
+        alu_uop_p1_in.vsat_cout.vsaturate = result_mask_p0.vsaturate;
+      end
+    endcase
+  end
+  
+  cdffr
+  uop_valid_p1
+  ( 
+    .clk        (clk), 
+    .rst_n      (rst_n), 
+    .c          (trap_flush_rvv),
+    .e          (alu_uop_valid_p1_en), 
+    .d          (alu_uop_valid_p1_in),
+    .q          (alu_uop_valid_p1)
+  ); 
+  
+  edff
+  #(
+    .T      (PIPE_DATA_t)
+  )
+  uop_p1
+  (
+    .clk    (clk),
+    .rst_n  (rst_n),
+    .e      (alu_uop_p1_en), 
+    .d      (alu_uop_p1_in),
+    .q      (alu_uop_p1)
+  );
+
+  rvv_backend_alu_unit_execution_p1 #(
+    .CMP_SUPPORT          (CMP_SUPPORT)
+  ) u_alu_p1
+  ( 
+    .clk                  (clk),
+    .rst_n                (rst_n),
+    .alu_uop_valid        (alu_uop_valid_p1),
+    .alu_uop              (alu_uop_p1),
+    .result_valid         (result_valid_p1),
+    .result               (result_p1),
+    .trap_flush_rvv       (trap_flush_rvv)
+  );
+
+// 
+// submit to ROB
+// 
+  always_comb begin
+    result_valid = 1'b0;
+    result       = 'b0;
+    pop_rs       = 1'b0;
+
+    // EML result: multi-cycle, bypasses pipeline, highest priority
+    if (result_valid_eml) begin
+      result_valid = 1'b1;
+      result.rob_entry           = result_eml.rob_entry;
+      result.w_data              = result_eml.w_data;
+      result.w_valid             = result_eml.w_valid;
+      result.vsaturate           = result_eml.vsat_cout.vsaturate;
+    `ifdef TB_SUPPORT
+      result.uop_pc              = result_eml.uop_pc;
+    `endif
+    `ifdef ZVE32F_ON
+      result.fpexp               = '0;
+    `endif
+      pop_rs       = pop_rs_eml;
+    end else begin
+      // Standard single-cycle units + p1 pipeline
+      std_result_valid = 1'b0;
+      std_result       = 'b0;
+      std_pop_rs       = 1'b0;
+      case({result_valid_p1,(result_valid_addsub_p0|result_valid_shift_p0|result_valid_mask_p0|result_valid_other_p0)})
+        2'b01: begin
+          case(1'b1)
+            result_valid_addsub_p0: begin
+              std_pop_rs = 1'b1;
+            end
+            result_valid_shift_p0: begin
+              std_result_valid = 1'b1;
+              std_result       = result_shift_p0;
+              std_pop_rs       = result_ready;
+            end
+            result_valid_other_p0: begin
+              std_result_valid = 1'b1;
+              std_result       = result_other_p0;
+              std_pop_rs       = result_ready;
+            end
+            result_valid_mask_p0: begin
+              std_result_valid = 1'b1;
+              std_result       = result_mask_p0;
+              std_pop_rs       = result_ready;
+            end
+            default: begin
+            end
+          endcase
+        end
+        2'b10: begin
+          std_result_valid = 1'b1;
+          std_result       = result_p1;
+        end
+        2'b11: begin
+          std_result_valid = 1'b1;
+          std_result       = result_p1;
+          std_pop_rs       = result_ready;
+        end
+        default: begin  // 2'b00
+        end
+      endcase
+      // Merge EML pop with standard pop — no overwrite
+      result_valid = std_result_valid;
+      result       = std_result;
+      pop_rs       = pop_rs_eml | std_pop_rs;
+    end
+  end
+
+endmodule
