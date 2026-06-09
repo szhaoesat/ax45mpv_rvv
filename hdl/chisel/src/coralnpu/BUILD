@@ -190,6 +190,19 @@ chisel_library(
         "//hdl/verilog/rvv/inc:rvv_backend_fma.svh",
         "//hdl/verilog/rvv/inc:rvv_backend_pmtrdt.svh",
         "//hdl/verilog/rvv/inc:rvv_backend_sva.svh",
+
+        # Andes AX45MPV donor RVV (kv_vpu + dependencies)
+        "//third_party/ax45mpv/andes_ip/kv_core/vpu/hdl:all_srcs",
+        "//third_party/ax45mpv/andes_ip/kv_core/top/hdl:all_srcs",
+        "//third_party/ax45mpv/andes_ip/kv_core/ucore/hdl:all_srcs",
+        "//third_party/ax45mpv/andes_ip/kv_core/macro/hdl:all_srcs",
+        "//third_party/ax45mpv/andes_ip/kv_core/ace/hdl:all_srcs",
+        "//third_party/ax45mpv/andes_ip/kv_core/biu/hdl:all_srcs",
+        "//third_party/ax45mpv/andes_ip/kv_core/tilelink/hdl:all_srcs",
+        "//third_party/ax45mpv/andes_ip/kv_core/fpu/hdl:all_srcs",
+        "//third_party/ax45mpv/andes_ip/macro:all_srcs",
+
+        "//hdl/verilog/rvv/design:Ax45mpvRvvCore.sv",
     ],
     deps = [
         ":coralnpu_base",
@@ -743,11 +756,15 @@ template_rule(
     },
     chisel_lib = ":coralnpu",
     emit_class = "coralnpu.EmitCore",
+    verilog_deps = [
+        "//third_party/ax45mpv/andes_ip/kv_core:kv_vpu_all",
+        "//third_party/ax45mpv/andes_ip/macro:nds_lib",
+    ],
     vopts = [
         "-DUSE_GENERIC",
         # RVV
         "-DTB_SUPPORT",
-        "-DVLEN_128",
+        "-DVLEN_512",
         "-DZVE32F_ON",
         "-Wno-WIDTH",
         "-Wno-CASEINCOMPLETE",
@@ -761,8 +778,13 @@ template_rule(
         "-Wno-ASCRANGE",
         "-Wno-WIDTHEXPAND",
         "-Wno-WIDTHTRUNC",
-        "-Wno-UNSIGNED",
         "-Ihdl/verilog/rvv/inc",
+        "-Ihdl/verilog/rvv/design/FPnew/common_cells/inc",
+        # Andes AX45MPV donor RVV
+        "-Ithird_party/ax45mpv/andes_ip/kv_core/vpu/hdl",
+        "-Ithird_party/ax45mpv/andes_ip/kv_core/ucore/hdl",
+        "-Ithird_party/ax45mpv/andes_ip/kv_core/macro/hdl",
+        "-Ithird_party/ax45mpv/andes_ip/macro",
         "-Ihdl/verilog/rvv/design/FPnew/common_cells/inc",
     ],
 )

@@ -34,8 +34,19 @@ VERILATOR_BUILD_ARGS = [
     "-DUSE_GENERIC=\"\"",
     "-DTB_SUPPORT",
     "-DZVE32F_ON",
-    "-DVLEN_128",
+    "-DVLEN_512",
     "-Ihdl/verilog",
+    "-Ihdl/verilog/rvv/inc",
+    # Andes AX45MPV donor RVV include/library directories
+    "-Ithird_party/ax45mpv/andes_ip/kv_core/top/hdl",
+    "-y third_party/ax45mpv/andes_ip/kv_core/vpu/hdl",
+    "-y third_party/ax45mpv/andes_ip/kv_core/ucore/hdl",
+    "-y third_party/ax45mpv/andes_ip/kv_core/macro/hdl",
+    "-y third_party/ax45mpv/andes_ip/kv_core/ace/hdl",
+    "-y third_party/ax45mpv/andes_ip/kv_core/biu/hdl",
+    "-y third_party/ax45mpv/andes_ip/kv_core/tilelink/hdl",
+    "-y third_party/ax45mpv/andes_ip/kv_core/fpu/hdl",
+    "-y third_party/ax45mpv/andes_ip/macro",
     "-LDFLAGS \"-rdynamic\"",
 ]
 
@@ -74,7 +85,7 @@ VCS_DEFINES = {
     "USE_GENERIC": "",
     "TB_SUPPORT": "",
     "ZVE32F_ON": "",
-    "VLEN_128": "",
+    "VLEN_512": "",
     # Skips default value checks for RTSEL and WTSEL pins in TSMC simulation models
     "TSMC_NO_TESTPINS_DEFAULT_VALUE_CHECK": "",
 }

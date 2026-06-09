@@ -37,40 +37,50 @@ template_rule(
             "build_args": ["+define+DUT_MODULE=CoreMini_ITCM512KB_DTCM512KBAxi"],
         },
         "rvv_core_mini_axi_sim": {
-            "verilog_deps": ["//hdl/chisel/src/coralnpu:rvv_core_mini_axi_cc_library_verilog"],
+            "verilog_deps": [
+                "//hdl/chisel/src/coralnpu:rvv_core_mini_axi_cc_library_verilog",
+                "//third_party/ax45mpv/andes_ip/kv_core:kv_vpu_all",
+                "//third_party/ax45mpv/andes_ip/macro:nds_lib",
+            ],
             "build_args": [
                 "+define+DUT_MODULE=RvvCoreMiniAxi",
-                "+define+VLEN_128",
+                "+define+VLEN_512",
                 "+define+ZVE32F_ON",
                 "+define+TB_SUPPORT",
                 "+define+USE_GENERIC",
             ],
         },
         "rvv_core_mini_highmem_axi_sim": {
-            "verilog_deps": ["//hdl/chisel/src/coralnpu:rvv_core_mini_highmem_axi_cc_library_verilog"],
+            "verilog_deps": [
+                "//hdl/chisel/src/coralnpu:rvv_core_mini_highmem_axi_cc_library_verilog",
+                "//third_party/ax45mpv/andes_ip/kv_core:kv_vpu_all",
+                "//third_party/ax45mpv/andes_ip/macro:nds_lib",
+            ],
             "build_args": [
-                "+define+DUT_MODULE=RvvCoreMiniHighmemAxi",
-                "+define+VLEN_128",
                 "+define+ZVE32F_ON",
                 "+define+TB_SUPPORT",
                 "+define+USE_GENERIC",
             ],
         },
         "rvv_core_mini_itcm512kb_dtcm512kb_axi_sim": {
-            "verilog_deps": ["//hdl/chisel/src/coralnpu:rvv_core_mini_itcm512kb_dtcm512kb_axi_cc_library_verilog"],
+            "verilog_deps": [
+                "//hdl/chisel/src/coralnpu:rvv_core_mini_itcm512kb_dtcm512kb_axi_cc_library_verilog",
+                "//third_party/ax45mpv/andes_ip/kv_core:kv_vpu_all",
+                "//third_party/ax45mpv/andes_ip/macro:nds_lib",
+            ],
             "build_args": [
-                "+define+DUT_MODULE=RvvCoreMini_ITCM512KB_DTCM512KBAxi",
-                "+define+VLEN_128",
                 "+define+ZVE32F_ON",
                 "+define+TB_SUPPORT",
                 "+define+USE_GENERIC",
             ],
         },
         "rvv_core_mini_verification_axi_sim": {
-            "verilog_deps": ["//hdl/chisel/src/coralnpu:rvv_core_mini_verification_axi_cc_library_verilog"],
+            "verilog_deps": [
+                "//hdl/chisel/src/coralnpu:rvv_core_mini_verification_axi_cc_library_verilog",
+                "//third_party/ax45mpv/andes_ip/kv_core:kv_vpu_all",
+                "//third_party/ax45mpv/andes_ip/macro:nds_lib",
+            ],
             "build_args": [
-                "+define+DUT_MODULE=RvvCoreMiniVerificationAxi",
-                "+define+VLEN_128",
                 "+define+ZVE32F_ON",
                 "+define+TB_SUPPORT",
                 "+define+USE_GENERIC",

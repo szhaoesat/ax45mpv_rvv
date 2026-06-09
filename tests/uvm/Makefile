@@ -73,14 +73,24 @@ VCS_COMPILE_OPTS = \
 	-full64 \
 	-sverilog \
 	+define+UVM_NO_DEPRECATED \
+	+define+VCS \
 	+define+TB_SUPPORT \
-        +define+VLEN_128 \
+        +define+VLEN_512 \
         +define+ZVE32F_ON \
 	-ntb_opts uvm-1.2 \
 	-debug_access+all \
-	-kdb \
 	-timescale=1ns/1ps \
-	-o $(SIM_EXEC)
+	-o $(SIM_EXEC) \
+	+libext+.v+.sv+.svh \
+	+incdir+../../third_party/ax45mpv/andes_ip/kv_core/top/hdl \
+	-y ../../third_party/ax45mpv/andes_ip/kv_core/vpu/hdl \
+	-y ../../third_party/ax45mpv/andes_ip/kv_core/ucore/hdl \
+	-y ../../third_party/ax45mpv/andes_ip/kv_core/macro/hdl \
+	-y ../../third_party/ax45mpv/andes_ip/kv_core/ace/hdl \
+	-y ../../third_party/ax45mpv/andes_ip/kv_core/biu/hdl \
+	-y ../../third_party/ax45mpv/andes_ip/kv_core/tilelink/hdl \
+	-y ../../third_party/ax45mpv/andes_ip/kv_core/fpu/hdl \
+	-v ../../third_party/ax45mpv/andes_ip/macro/nds_lib.v
 
 # Add C++ compiler/linker options for MPACT-Sim
 VCS_COMPILE_OPTS += \

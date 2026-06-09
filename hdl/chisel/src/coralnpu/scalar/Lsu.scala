@@ -873,11 +873,11 @@ class LsuV2(p: Parameters) extends Lsu(p) {
   opQueue.io.enqData := alignedOps.map(_.bits)
   assert(opQueue.io.enqValid <= opQueue.io.nSpace)
 
-  val nextSlot = LsuSlot.fromLsuUOp(opQueue.io.dataOut(0), p, 16)
+  val nextSlot = LsuSlot.fromLsuUOp(opQueue.io.dataOut(0), p, p.rvvVlenb)
 
   // Tracks if a read has been fired last cycle.
   val readFired = RegInit(MakeInvalid(new LsuRead(32 - nextSlot.elemBits)))
-  val slot = RegInit(LsuSlot.inactive(p, 16))
+  val slot = RegInit(LsuSlot.inactive(p, p.rvvVlenb))
 
   val readData = MuxLookup(readFired.bits.bus, 0.U)(Seq(
       LsuBus.IBUS -> io.ibus.rdata,
@@ -990,7 +990,7 @@ class LsuV2(p: Parameters) extends Lsu(p) {
   }
 
   // Transaction update
-  val storeUpdate = Mux(slotFired, wactive, VecInit.fill(16)(false.B))
+  val storeUpdate = Mux(slotFired, wactive, VecInit.fill(p.rvvVlenb)(false.B))
   val transactionUpdatedSlot = Mux(slot.store,
       slot.storeUpdate(storeUpdate), loadUpdatedSlot)
   val lsu2RvvFire = if (p.enableRvv) { io.lsu2rvv.get(0).fire } else { false.B }
@@ -1066,7 +1066,7 @@ class LsuV2(p: Parameters) extends Lsu(p) {
   // Slot update
   val slotNext = MuxCase(slot, Seq(
     // Move to inactive if error.
-    (faultReg.valid) -> LsuSlot.inactive(p, 16),
+    (faultReg.valid) -> LsuSlot.inactive(p, p.rvvVlenb),
     // When inactive, dequeue if possible
     (slot.slotIdle() && (opQueue.io.nEnqueued > 0.U)) -> nextSlot,
     // Vector update.

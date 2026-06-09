@@ -46,7 +46,7 @@ class spike_cosim_checker extends uvm_object;
   // Synchronizes the Spike log to the retired RTL instruction and verifies
   // that all register writes reported by Spike match the RTL state.
   function void check_instruction(retired_instr_info_s rtl_info,
-                                  virtual rvviTrace #(.ILEN(32), .XLEN(32), .FLEN(32), .VLEN(128), .NHART(1), .RETIRE(8)) rvvi_vif,
+                                  virtual rvviTrace #(.ILEN(32), .XLEN(32), .FLEN(32), .VLEN(512), .NHART(1), .RETIRE(8)) rvvi_vif,
                                   input bit [31:0] skip_mask);
     if (!spike_enabled) return;
 

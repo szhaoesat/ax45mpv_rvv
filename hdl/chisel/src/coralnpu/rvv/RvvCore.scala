@@ -282,7 +282,7 @@ object GenerateCoreShimSource {
     coreInstantiation += "  logic [3:0] rd_valid_rob2rt_o;\n"
     coreInstantiation += "  RVVInstruction trap_data;\n"
 
-    coreInstantiation += """  RvvCore#(.N (GENN)) core(
+    coreInstantiation += """  Ax45mpvRvvCore#(.N (GENN)) core(
         |      .clk(clk),
         |      .rstn(rstn),
         |      .vstart(vstart),
@@ -578,6 +578,7 @@ class RvvCoreWrapper(p: Parameters) extends BlackBox with HasBlackBoxInline
   addResource("hdl/verilog/rvv/design/rvv_backend_vrf.sv")
   addResource("hdl/verilog/rvv/design/rvv_backend.sv")
   addResource("hdl/verilog/rvv/design/RvvCore.sv")
+  addResource("hdl/verilog/rvv/design/Ax45mpvRvvCore.sv")
   setInline("RvvCoreWrapper.sv", GenerateCoreShimSource(p.instructionLanes, p.rvvVlen))
 }
 

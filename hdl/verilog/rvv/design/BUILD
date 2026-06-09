@@ -85,6 +85,7 @@ exports_files(
         "Aligner.sv",
         "MultiFifo.sv",
         "RvvCore.sv",
+        "Ax45mpvRvvCore.sv",
         "RvvFrontEnd.sv",
 
 

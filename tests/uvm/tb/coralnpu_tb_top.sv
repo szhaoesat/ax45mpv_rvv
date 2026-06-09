@@ -64,7 +64,7 @@ module coralnpu_tb_top;
   coralnpu_irq_if irq_if ( .clk(clk), .resetn(resetn) );
 
   virtual rvviTrace #(
-    .ILEN(32), .XLEN(32), .FLEN(32), .VLEN(128), .NHART(1), .RETIRE(8)
+    .ILEN(32), .XLEN(32), .FLEN(32), .VLEN(512), .NHART(1), .RETIRE(8)
   ) rvvi_vif;
 
 
@@ -319,10 +319,10 @@ module coralnpu_tb_top;
         "*", "irq_vif", irq_if);
 
     uvm_config_db#(virtual rvviTrace #(.ILEN(32), .XLEN(32), .FLEN(32),
-        .VLEN(128), .NHART(1), .RETIRE(8)))::set(null,
+        .VLEN(512), .NHART(1), .RETIRE(8)))::set(null,
         "*.env.m_cosim_checker*", "rvvi_vif", rvvi_vif);
     uvm_config_db#(virtual rvviTrace #(.ILEN(32), .XLEN(32), .FLEN(32),
-        .VLEN(128), .NHART(1), .RETIRE(8)))::set(null,
+        .VLEN(512), .NHART(1), .RETIRE(8)))::set(null,
         "*.env.m_rvvi_agent*", "rvvi_vif", rvvi_vif);
 
     uvm_config_db#(time)::set(null, "*", "clk_period", CLK_PERIOD);

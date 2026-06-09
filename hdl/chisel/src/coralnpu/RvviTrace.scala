@@ -53,7 +53,8 @@ object GenerateRvviTraceSource {
                 "  input logic [31:0] f_wb_i_GENI,\n".
                 replaceAll("GENI", i.toString)
             moduleInterface +=
-                "  input logic [4095:0] v_wdata_i_GENI,\n".
+                "  input logic [GENVWIDTH:0] v_wdata_i_GENI,\n".
+                replaceAll("GENVWIDTH", (32 * p.rvvVlen - 1).toString).
                 replaceAll("GENI", i.toString)
             moduleInterface +=
                 "  input logic [31:0] v_wb_i_GENI,\n".
@@ -77,11 +78,11 @@ object GenerateRvviTraceSource {
         |    .ILEN(32),
         |    .XLEN(32),
         |    .FLEN(32),
-        |    .VLEN(128),
+        |    .VLEN(GEN_vlen),
         |    .NHART(1),
         |    .RETIRE(GEN_retirementBufferSize)
         |  ) rvvi();
-        |""".replaceAll("GEN_retirementBufferSize", p.retirementBufferSize.toString).stripMargin
+        |""".replaceAll("GEN_vlen", p.rvvVlen.toString).replaceAll("GEN_retirementBufferSize", p.retirementBufferSize.toString).stripMargin
 
         coreInstantiation += "  assign rvvi.clk = clk_i;\n"
         for (i <- 0 until p.retirementBufferSize) {
@@ -130,7 +131,7 @@ class RvviTraceBlackBox(p: Parameters) extends BlackBox with HasBlackBoxInline
         val x_wb_i = Input(Vec(p.retirementBufferSize, UInt(32.W)))
         val f_wdata_i = Input(Vec(p.retirementBufferSize, UInt((32 * 32).W)))
         val f_wb_i = Input(Vec(p.retirementBufferSize, UInt(32.W)))
-        val v_wdata_i = Input(Vec(p.retirementBufferSize, UInt((32 * 128).W)))
+        val v_wdata_i = Input(Vec(p.retirementBufferSize, UInt((32 * p.rvvVlen).W)))
         val v_wb_i = Input(Vec(p.retirementBufferSize, UInt(32.W)))
         val csr_i = Input(Vec(p.retirementBufferSize * p.retirementBufferSize, UInt(((4096 / p.retirementBufferSize) * 32).W)))
         val csr_wb_i = Input(Vec(p.retirementBufferSize, UInt(4096.W)))
@@ -148,7 +149,7 @@ class RvviTrace(p: Parameters) extends Module {
     val x_wb = Wire(Vec(p.retirementBufferSize, Vec(32, Bool())))
     val f_wdata = Wire(Vec(p.retirementBufferSize, Vec(32, UInt(32.W))))
     val f_wb = Wire(Vec(p.retirementBufferSize, Vec(32, Bool())))
-    val v_wdata = Wire(Vec(p.retirementBufferSize, Vec(32, UInt(128.W))))
+    val v_wdata = Wire(Vec(p.retirementBufferSize, Vec(32, UInt(p.rvvVlen.W))))
     val v_wb = Wire(Vec(p.retirementBufferSize, Vec(32, Bool())))
     val csr = Wire(Vec(p.retirementBufferSize, Vec(4096, UInt(32.W))))
     val csr_wb = Wire(Vec(p.retirementBufferSize, Vec(4096, Bool())))

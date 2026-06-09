@@ -1,0 +1,8 @@
+// AX45MPV_PREMIUM v30.1.0
+`ifdef NDS_GLOBAL_INC
+`else
+`define NDS_GLOBAL_INC
+
+
+`endif // NDS_GLOBAL_INC
+

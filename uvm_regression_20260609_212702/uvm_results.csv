@@ -1,0 +1,21 @@
+Target,Status,Reason,Log Path
+//third_party/riscv-tests:rv32uf-p-fadd,PASS,None,logs/third_party_riscv-tests_rv32uf-p-fadd.log
+//third_party/riscv-tests:rv32uf-p-fclass,PASS,None,logs/third_party_riscv-tests_rv32uf-p-fclass.log
+//third_party/riscv-tests:rv32uf-p-fcmp,PASS,None,logs/third_party_riscv-tests_rv32uf-p-fcmp.log
+//third_party/riscv-tests:rv32uf-p-fcvt,PASS,None,logs/third_party_riscv-tests_rv32uf-p-fcvt.log
+//third_party/riscv-tests:rv32uf-p-fcvt_w,PASS,None,logs/third_party_riscv-tests_rv32uf-p-fcvt_w.log
+//third_party/riscv-tests:rv32uf-p-fdiv,PASS,None,logs/third_party_riscv-tests_rv32uf-p-fdiv.log
+//third_party/riscv-tests:rv32uf-p-fmadd,PASS,None,logs/third_party_riscv-tests_rv32uf-p-fmadd.log
+//third_party/riscv-tests:rv32uf-p-fmin,PASS,None,logs/third_party_riscv-tests_rv32uf-p-fmin.log
+//third_party/riscv-tests:rv32uf-p-ldst,PASS,None,logs/third_party_riscv-tests_rv32uf-p-ldst.log
+//third_party/riscv-tests:rv32uf-p-move,PASS,None,logs/third_party_riscv-tests_rv32uf-p-move.log
+//third_party/riscv-tests:rv32uf-p-recoding,PASS,None,logs/third_party_riscv-tests_rv32uf-p-recoding.log
+//third_party/riscv-tests:rv32uf-v-fadd,PASS,None,logs/third_party_riscv-tests_rv32uf-v-fadd.log
+//third_party/riscv-tests:rv32uf-v-fclass,PASS,None,logs/third_party_riscv-tests_rv32uf-v-fclass.log
+//third_party/riscv-tests:rv32uf-v-fcmp,PASS,None,logs/third_party_riscv-tests_rv32uf-v-fcmp.log
+//third_party/riscv-tests:rv32uf-v-fcvt,PASS,None,logs/third_party_riscv-tests_rv32uf-v-fcvt.log
+//third_party/riscv-tests:rv32uf-v-fcvt_w,PASS,None,logs/third_party_riscv-tests_rv32uf-v-fcvt_w.log
+//third_party/riscv-tests:rv32uf-v-fdiv,PASS,None,logs/third_party_riscv-tests_rv32uf-v-fdiv.log
+//third_party/riscv-tests:rv32uf-v-fmadd,PASS,None,logs/third_party_riscv-tests_rv32uf-v-fmadd.log
+//third_party/riscv-tests:rv32uf-v-fmin,PASS,None,logs/third_party_riscv-tests_rv32uf-v-fmin.log
+//third_party/riscv-tests:rv32uf-v-ldst,PASS,None,logs/third_party_riscv-tests_rv32uf-v-ldst.log

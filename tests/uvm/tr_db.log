@@ -1,0 +1,5 @@
+  CREATE_STREAM @55000 {NAME:kickoff_seq T:Transactions SCOPE:uvm_test_top.env.m_master_agent.sequencer STREAM:906}
+  CREATE_STREAM @55000 {NAME:kickoff_seq T:Transactions SCOPE:uvm_test_top.env.m_master_agent.sequencer STREAM:906}
+  CREATE_STREAM @55000 {NAME:kickoff_seq T:Transactions SCOPE:uvm_test_top.env.m_master_agent.sequencer STREAM:906}
+  CREATE_STREAM @55000 {NAME:kickoff_seq T:Transactions SCOPE:uvm_test_top.env.m_master_agent.sequencer STREAM:906}
+  CREATE_STREAM @55000 {NAME:kickoff_seq T:Transactions SCOPE:uvm_test_top.env.m_master_agent.sequencer STREAM:906}

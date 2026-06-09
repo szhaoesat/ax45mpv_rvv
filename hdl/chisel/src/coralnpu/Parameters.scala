@@ -77,7 +77,7 @@ class Parameters(var m: Seq[MemoryRegion] = Seq(), val hartId: Int = 0) {
 
   // Enable RVV. This conforms to the RVV1.0 specification.
   var enableRvv = false
-  val rvvVlen = 128
+  val rvvVlen = 512
   def rvvVlenb: Int = { rvvVlen / 8 }
 
   def useRetirementBuffer: Boolean = { enableVerification }
@@ -119,7 +119,7 @@ class Parameters(var m: Seq[MemoryRegion] = Seq(), val hartId: Int = 0) {
   val lsuAddrBits = 32  // do not change
   var lsuDataBits = 256
   def lsuDataBytes: Int = { lsuDataBits / 8 }
-  val lsuDelayPipelineLen = 1
+  val lsuDelayPipelineLen = 4
   def dbusSize: Int = { log2Ceil(lsuDataBits / 8) + 1 }
 
   // TCM Size Configuration

@@ -61,7 +61,7 @@ package coralnpu_cosim_checker_pkg;
 
     // Use fully parameterized virtual interface type
     virtual rvviTrace #(
-      .ILEN(32), .XLEN(32), .FLEN(32), .VLEN(128), .NHART(1), .RETIRE(8)
+      .ILEN(32), .XLEN(32), .FLEN(32), .VLEN(512), .NHART(1), .RETIRE(8)
     ) rvvi_vif;
 
     // Event to wait on, which will be triggered by the RVVI monitor
@@ -198,7 +198,7 @@ package coralnpu_cosim_checker_pkg;
       super.build_phase(phase);
       // Get the RVVI virtual interface from the config_db (set by tb_top)
       if (!uvm_config_db#(
-          virtual rvviTrace #(.ILEN(32), .XLEN(32), .FLEN(32), .VLEN(128),
+          virtual rvviTrace #(.ILEN(32), .XLEN(32), .FLEN(32), .VLEN(512),
                               .NHART(1), .RETIRE(8))
           )::get(this, "", "rvvi_vif", rvvi_vif)) begin
          `uvm_fatal(get_type_name(), "RVVI virtual interface not found!")

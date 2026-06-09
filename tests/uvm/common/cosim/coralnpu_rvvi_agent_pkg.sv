@@ -26,7 +26,7 @@ package coralnpu_rvvi_agent_pkg;
   localparam int ILEN   = 32;
   localparam int XLEN   = 32;
   localparam int FLEN   = 32;
-  localparam int VLEN   = 128;
+  localparam int VLEN   = 512;
   localparam int NHART  = 1;
   localparam int RETIRE = 8;
 

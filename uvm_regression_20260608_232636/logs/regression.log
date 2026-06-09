@@ -1,0 +1,186 @@
+make: Entering directory '/fact_data/shiruizhao/rvv_benchmark/ax45mpv_rvv/tests/uvm'
+--- Running Simulation ---
+Test:      coralnpu_regression_test
+ELF File:  ./bin/program.elf
+Verbosity: UVM_LOW
+Timeout:   100000 ns
+Plusargs:  +UVM_TESTNAME=coralnpu_regression_test +UVM_VERBOSITY=UVM_LOW +TEST_TIMEOUT=100000 +TEST_ELF=./bin/program.elf +MISA_VALUE=h40201120
+Log File:  ./sim_work/logs/coralnpu_regression_test.log
+Wave File: ./sim_work/waves/coralnpu_regression_test.fsdb
+././sim_work/simv +UVM_TESTNAME=coralnpu_regression_test +UVM_VERBOSITY=UVM_LOW +TEST_TIMEOUT=100000 +TEST_ELF=./bin/program.elf +MISA_VALUE="'h40201120'" +REGRESSION_LIST=/fact_data/shiruizhao/rvv_benchmark/ax45mpv_rvv/uvm_regression_20260608_232636/current_batch.txt +fsdb+all +fsdbfile+./sim_work/waves/coralnpu_regression_test.fsdb -l ./sim_work/logs/coralnpu_regression_test.log
+Info: [VCS_SAVE_RESTORE_INFO] ASLR (Address Space Layout Randomization) is detected on the machine. To enable $save functionality, ASLR will be switched off and simv re-executed.
+Please use '-no_save' simv switch to avoid re-execution or '-suppress=ASLR_DETECTED_INFO' to suppress this message.
+Chronologic VCS simulator copyright 1991-2023
+Contains Synopsys proprietary information.
+Compiler version V-2023.12-SP2-4_Full64; Runtime version V-2023.12-SP2-4_Full64;  Jun  8 23:26 2026
+Warning : License for product VCS-BASE-RUNTIME will expire within 8 days, on: 15-jun-2026.
+
+If you would like to temporarily disable this message, set 
+ the VCS_LIC_EXPIRE_WARNING environment variable to the number of days
+before expiration that you want this message to start (the minimum is 0).
+UVM_INFO /fact_data/softwares/synopsys/vcs/V-2023.12-SP2-4/etc/uvm-1.2/base/uvm_root.svh(402) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+UVM-1.2.Synopsys
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO ./tb/coralnpu_tb_top.sv(214) @ 0: reporter [TB_TOP] Reset Asserted
+*Verdi* Loading libsscore_vcs202312.so
+FSDB Dumper for VCS, Release Verdi_W-2024.09, Linux x86_64/64bit, 08/17/2024
+(C) 1996 - 2024 by Synopsys, Inc.
+*Verdi* WARNING: Env/runtime option has specified fsdbfile name as "./sim_work/waves/coralnpu_regression_test.fsdb". Fsdbfile name in task "./sim_work/waves/coralnpu_base_test.fsdb" is ignored.
+*Verdi* FSDB WARNING: The FSDB file already exists. Overwriting the FSDB file may crash the programs that are using this file.
+*Verdi* : Create FSDB file './sim_work/waves/coralnpu_regression_test.fsdb'
+*Verdi* : Begin traversing the scope (coralnpu_tb_top), layer (0).
+*Verdi* : Enable +all and +mda dumping.
+*Verdi* : End of traversing.
+UVM_INFO ./tb/coralnpu_tb_top.sv(229) @ 0: reporter [TB_TOP] FSDB Waveform Dumping Enabled to: ./sim_work/waves/coralnpu_base_test.fsdb
+UVM_INFO @ 0: reporter [RNTST] Running test coralnpu_regression_test...
+UVM_INFO ./tests/coralnpu_test_pkg.sv(436) @ 0: uvm_test_top [coralnpu_regression_test] --- STARTING TEST: //third_party/riscv-tests:rv32uf-p-fadd ---
+UVM_INFO ./tb/coralnpu_tb_top.sv(217) @ 45000: reporter [TB_TOP] Reset Deasserted
+UVM_INFO ./common/cosim/coralnpu_cosim_checker_pkg.sv(368) @ 55000: uvm_test_top.env.m_cosim_checker [coralnpu_cosim_checker] Initializing Co-Sim for /tmp/uvm_reg_q9tia0j7/third_party_riscv-tests_rv32uf-p-fadd.elf
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1780932397.859765 1116624 coralnpu_cosim_dpi_wrapper.cc:411] [DPI] mpact_fini: g_mpact_handle is null.
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 55000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_pc                         axi_transaction   -     @914                                                 
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30004                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf0                                                 
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    55000                                                
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 115000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(61) @ 115000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 1 (PC Data=0x00000000000000000000000000000000) sent to addr 0x00030004
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 115000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_clk_gate                   axi_transaction   -     @925                                                 
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h1                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    115000                                               
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 155000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(80) @ 155000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 2 (ClkGate Data=0x00000000000000000000000000000001) sent to addr 0x00030000
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 155000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_reset                      axi_transaction   -     @935                                                 
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    155000                                               
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 195000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(99) @ 195000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 3 (Reset Data=0x00000000000000000000000000000000) sent to addr 0x00030000
+UVM_INFO ./tests/coralnpu_test_pkg.sv(552) @ 100200000: uvm_test_top [coralnpu_regression_test] Test timed out, but no Co-Simulation mismatches were detected. Assuming PASS.
+UVM_INFO ./tests/coralnpu_test_pkg.sv(567) @ 100200000: uvm_test_top [coralnpu_regression_test] ** UVM TEST PASSED **
+UVM_INFO ./tests/coralnpu_test_pkg.sv(514) @ 100200000: uvm_test_top [coralnpu_regression_test] --- FINISHED TEST: //third_party/riscv-tests:rv32uf-p-fadd ---
+
+UVM_INFO ./tests/coralnpu_test_pkg.sv(520) @ 100200000: uvm_test_top [coralnpu_regression_test] REGRESSION COMPLETE. Passed: 1/1
+UVM_INFO ./tests/coralnpu_test_pkg.sv(579) @ 100200000: uvm_test_top [REGRESSION_SUMMARY] All 1 tests passed.
+UVM_INFO /fact_data/softwares/synopsys/vcs/V-2023.12-SP2-4/etc/uvm-1.2/base/uvm_report_catcher.svh(705) @ 100200000: reporter [UVM/REPORT/CATCHER] 
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0
+
+UVM_INFO /fact_data/softwares/synopsys/vcs/V-2023.12-SP2-4/etc/uvm-1.2/base/uvm_report_server.svh(904) @ 100200000: reporter [UVM/REPORT/SERVER] 
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   22
+UVM_WARNING :    0
+UVM_ERROR :    0
+UVM_FATAL :    0
+** Report counts by id
+[REGRESSION_SUMMARY]     1
+[RNTST]     1
+[TB_TOP]     3
+[UVM/RELNOTES]     1
+[UVM/REPORT/CATCHER]     1
+[coralnpu_axi_master_driver]     6
+[coralnpu_cosim_checker]     1
+[coralnpu_kickoff_write_seq]     3
+[coralnpu_regression_test]     5
+
+$finish called from file "/fact_data/softwares/synopsys/vcs/V-2023.12-SP2-4/etc/uvm-1.2/base/uvm_root.svh", line 527.
+$finish at simulation time            100200000
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 100200000 ps
+CPU Time:      1.440 seconds;       Data structure size:  32.5Mb
+Mon Jun  8 23:26:38 2026
+--- Simulation Finished ---
+make: Leaving directory '/fact_data/shiruizhao/rvv_benchmark/ax45mpv_rvv/tests/uvm'
