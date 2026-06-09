@@ -1,0 +1,1036 @@
+make: Entering directory '/fact_data/shiruizhao/rvv_benchmark/ax45mpv_rvv/tests/uvm'
+--- Running Simulation ---
+Test:      coralnpu_regression_test
+ELF File:  ./bin/program.elf
+Verbosity: UVM_LOW
+Timeout:   100000 ns
+Plusargs:  +UVM_TESTNAME=coralnpu_regression_test +UVM_VERBOSITY=UVM_LOW +TEST_TIMEOUT=100000 +TEST_ELF=./bin/program.elf +MISA_VALUE=h40201120
+Log File:  ./sim_work/logs/coralnpu_regression_test.log
+Wave File: ./sim_work/waves/coralnpu_regression_test.fsdb
+././sim_work/simv +UVM_TESTNAME=coralnpu_regression_test +UVM_VERBOSITY=UVM_LOW +TEST_TIMEOUT=100000 +TEST_ELF=./bin/program.elf +MISA_VALUE="'h40201120'" +REGRESSION_LIST=/fact_data/shiruizhao/rvv_benchmark/ax45mpv_rvv/uvm_regression_20260609_225133/current_batch.txt +fsdb+all +fsdbfile+./sim_work/waves/coralnpu_regression_test.fsdb -l ./sim_work/logs/coralnpu_regression_test.log
+Info: [VCS_SAVE_RESTORE_INFO] ASLR (Address Space Layout Randomization) is detected on the machine. To enable $save functionality, ASLR will be switched off and simv re-executed.
+Please use '-no_save' simv switch to avoid re-execution or '-suppress=ASLR_DETECTED_INFO' to suppress this message.
+Chronologic VCS simulator copyright 1991-2023
+Contains Synopsys proprietary information.
+Compiler version V-2023.12-SP2-4_Full64; Runtime version V-2023.12-SP2-4_Full64;  Jun  9 22:51 2026
+Warning : License for product VCS-BASE-RUNTIME will expire within 7 days, on: 15-jun-2026.
+
+If you would like to temporarily disable this message, set 
+ the VCS_LIC_EXPIRE_WARNING environment variable to the number of days
+before expiration that you want this message to start (the minimum is 0).
+UVM_INFO /fact_data/softwares/synopsys/vcs/V-2023.12-SP2-4/etc/uvm-1.2/base/uvm_root.svh(402) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+UVM-1.2.Synopsys
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO ./tb/coralnpu_tb_top.sv(214) @ 0: reporter [TB_TOP] Reset Asserted
+*Verdi* Loading libsscore_vcs202312.so
+FSDB Dumper for VCS, Release Verdi_W-2024.09, Linux x86_64/64bit, 08/17/2024
+(C) 1996 - 2024 by Synopsys, Inc.
+*Verdi* WARNING: Env/runtime option has specified fsdbfile name as "./sim_work/waves/coralnpu_regression_test.fsdb". Fsdbfile name in task "./sim_work/waves/coralnpu_base_test.fsdb" is ignored.
+*Verdi* FSDB WARNING: The FSDB file already exists. Overwriting the FSDB file may crash the programs that are using this file.
+*Verdi* : Create FSDB file './sim_work/waves/coralnpu_regression_test.fsdb'
+*Verdi* : Begin traversing the scope (coralnpu_tb_top), layer (0).
+*Verdi* : Enable +all and +mda dumping.
+*Verdi* : End of traversing.
+UVM_INFO ./tb/coralnpu_tb_top.sv(229) @ 0: reporter [TB_TOP] FSDB Waveform Dumping Enabled to: ./sim_work/waves/coralnpu_base_test.fsdb
+UVM_INFO @ 0: reporter [RNTST] Running test coralnpu_regression_test...
+UVM_INFO ./tests/coralnpu_test_pkg.sv(436) @ 0: uvm_test_top [coralnpu_regression_test] --- STARTING TEST: //third_party/riscv-tests:rv32uf-p-fadd ---
+UVM_INFO ./tb/coralnpu_tb_top.sv(217) @ 45000: reporter [TB_TOP] Reset Deasserted
+UVM_INFO ./common/cosim/coralnpu_cosim_checker_pkg.sv(368) @ 55000: uvm_test_top.env.m_cosim_checker [coralnpu_cosim_checker] Initializing Co-Sim for /tmp/uvm_reg_uynevesd/third_party_riscv-tests_rv32uf-p-fadd.elf
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1781016695.438689 1827328 coralnpu_cosim_dpi_wrapper.cc:411] [DPI] mpact_fini: g_mpact_handle is null.
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 55000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_pc                         axi_transaction   -     @914                                                 
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30004                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf0                                                 
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    55000                                                
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 115000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(61) @ 115000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 1 (PC Data=0x00000000000000000000000000000000) sent to addr 0x00030004
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 115000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_clk_gate                   axi_transaction   -     @925                                                 
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h1                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    115000                                               
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 155000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(80) @ 155000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 2 (ClkGate Data=0x00000000000000000000000000000001) sent to addr 0x00030000
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 155000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_reset                      axi_transaction   -     @935                                                 
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    155000                                               
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 195000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(99) @ 195000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 3 (Reset Data=0x00000000000000000000000000000000) sent to addr 0x00030000
+UVM_INFO ./tests/coralnpu_test_pkg.sv(552) @ 100200000: uvm_test_top [coralnpu_regression_test] Test timed out, but no Co-Simulation mismatches were detected. Assuming PASS.
+UVM_INFO ./tests/coralnpu_test_pkg.sv(567) @ 100200000: uvm_test_top [coralnpu_regression_test] ** UVM TEST PASSED **
+UVM_INFO ./tests/coralnpu_test_pkg.sv(514) @ 100200000: uvm_test_top [coralnpu_regression_test] --- FINISHED TEST: //third_party/riscv-tests:rv32uf-p-fadd ---
+
+UVM_INFO ./tests/coralnpu_test_pkg.sv(436) @ 100200000: uvm_test_top [coralnpu_regression_test] --- STARTING TEST: //third_party/riscv-tests:rv32uf-p-fclass ---
+UVM_INFO ./tb/coralnpu_tb_top.sv(214) @ 100200000: reporter [TB_TOP] Reset Asserted
+UVM_INFO ./tb/coralnpu_tb_top.sv(217) @ 100245000: reporter [TB_TOP] Reset Deasserted
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 100255000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_pc                         axi_transaction   -     @966                                                 
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30004                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf0                                                 
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    100255000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 100315000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(61) @ 100315000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 1 (PC Data=0x00000000000000000000000000000000) sent to addr 0x00030004
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 100315000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_clk_gate                   axi_transaction   -     @976                                                 
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h1                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    100315000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 100355000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(80) @ 100355000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 2 (ClkGate Data=0x00000000000000000000000000000001) sent to addr 0x00030000
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 100355000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_reset                      axi_transaction   -     @986                                                 
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    100355000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 100395000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(99) @ 100395000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 3 (Reset Data=0x00000000000000000000000000000000) sent to addr 0x00030000
+UVM_INFO ./tests/coralnpu_test_pkg.sv(552) @ 200400000: uvm_test_top [coralnpu_regression_test] Test timed out, but no Co-Simulation mismatches were detected. Assuming PASS.
+UVM_INFO ./tests/coralnpu_test_pkg.sv(567) @ 200400000: uvm_test_top [coralnpu_regression_test] ** UVM TEST PASSED **
+UVM_INFO ./tests/coralnpu_test_pkg.sv(514) @ 200400000: uvm_test_top [coralnpu_regression_test] --- FINISHED TEST: //third_party/riscv-tests:rv32uf-p-fclass ---
+
+UVM_INFO ./tests/coralnpu_test_pkg.sv(436) @ 200400000: uvm_test_top [coralnpu_regression_test] --- STARTING TEST: //third_party/riscv-tests:rv32uf-p-fcmp ---
+UVM_INFO ./tb/coralnpu_tb_top.sv(214) @ 200400000: reporter [TB_TOP] Reset Asserted
+UVM_INFO ./tb/coralnpu_tb_top.sv(217) @ 200445000: reporter [TB_TOP] Reset Deasserted
+UVM_INFO ./common/cosim/coralnpu_cosim_checker_pkg.sv(368) @ 200455000: uvm_test_top.env.m_cosim_checker [coralnpu_cosim_checker] Initializing Co-Sim for /tmp/uvm_reg_uynevesd/third_party_riscv-tests_rv32uf-p-fcmp.elf
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 200455000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_pc                         axi_transaction   -     @1021                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30004                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf0                                                 
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    200455000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 200515000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(61) @ 200515000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 1 (PC Data=0x00000000000000000000000000000000) sent to addr 0x00030004
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 200515000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_clk_gate                   axi_transaction   -     @1031                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h1                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    200515000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 200555000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(80) @ 200555000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 2 (ClkGate Data=0x00000000000000000000000000000001) sent to addr 0x00030000
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 200555000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_reset                      axi_transaction   -     @1041                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    200555000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 200595000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(99) @ 200595000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 3 (Reset Data=0x00000000000000000000000000000000) sent to addr 0x00030000
+UVM_INFO ./tests/coralnpu_test_pkg.sv(552) @ 300600000: uvm_test_top [coralnpu_regression_test] Test timed out, but no Co-Simulation mismatches were detected. Assuming PASS.
+UVM_INFO ./tests/coralnpu_test_pkg.sv(567) @ 300600000: uvm_test_top [coralnpu_regression_test] ** UVM TEST PASSED **
+UVM_INFO ./tests/coralnpu_test_pkg.sv(514) @ 300600000: uvm_test_top [coralnpu_regression_test] --- FINISHED TEST: //third_party/riscv-tests:rv32uf-p-fcmp ---
+
+UVM_INFO ./tests/coralnpu_test_pkg.sv(436) @ 300600000: uvm_test_top [coralnpu_regression_test] --- STARTING TEST: //third_party/riscv-tests:rv32uf-p-fcvt ---
+UVM_INFO ./tb/coralnpu_tb_top.sv(214) @ 300600000: reporter [TB_TOP] Reset Asserted
+UVM_INFO ./tb/coralnpu_tb_top.sv(217) @ 300645000: reporter [TB_TOP] Reset Deasserted
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 300655000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_pc                         axi_transaction   -     @1072                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30004                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf0                                                 
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    300655000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 300715000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(61) @ 300715000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 1 (PC Data=0x00000000000000000000000000000000) sent to addr 0x00030004
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 300715000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_clk_gate                   axi_transaction   -     @1082                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h1                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    300715000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 300755000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(80) @ 300755000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 2 (ClkGate Data=0x00000000000000000000000000000001) sent to addr 0x00030000
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 300755000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_reset                      axi_transaction   -     @1092                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    300755000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 300795000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(99) @ 300795000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 3 (Reset Data=0x00000000000000000000000000000000) sent to addr 0x00030000
+UVM_INFO ./tests/coralnpu_test_pkg.sv(552) @ 400800000: uvm_test_top [coralnpu_regression_test] Test timed out, but no Co-Simulation mismatches were detected. Assuming PASS.
+UVM_INFO ./tests/coralnpu_test_pkg.sv(567) @ 400800000: uvm_test_top [coralnpu_regression_test] ** UVM TEST PASSED **
+UVM_INFO ./tests/coralnpu_test_pkg.sv(514) @ 400800000: uvm_test_top [coralnpu_regression_test] --- FINISHED TEST: //third_party/riscv-tests:rv32uf-p-fcvt ---
+
+UVM_INFO ./tests/coralnpu_test_pkg.sv(436) @ 400800000: uvm_test_top [coralnpu_regression_test] --- STARTING TEST: //third_party/riscv-tests:rv32uf-p-fcvt_w ---
+UVM_INFO ./tb/coralnpu_tb_top.sv(214) @ 400800000: reporter [TB_TOP] Reset Asserted
+UVM_INFO ./tb/coralnpu_tb_top.sv(217) @ 400845000: reporter [TB_TOP] Reset Deasserted
+UVM_INFO ./common/cosim/coralnpu_cosim_checker_pkg.sv(368) @ 400855000: uvm_test_top.env.m_cosim_checker [coralnpu_cosim_checker] Initializing Co-Sim for /tmp/uvm_reg_uynevesd/third_party_riscv-tests_rv32uf-p-fcvt_w.elf
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 400855000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_pc                         axi_transaction   -     @1127                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30004                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf0                                                 
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    400855000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 400915000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(61) @ 400915000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 1 (PC Data=0x00000000000000000000000000000000) sent to addr 0x00030004
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 400915000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_clk_gate                   axi_transaction   -     @1137                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h1                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    400915000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 400955000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(80) @ 400955000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 2 (ClkGate Data=0x00000000000000000000000000000001) sent to addr 0x00030000
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 400955000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_reset                      axi_transaction   -     @1147                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    400955000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 400995000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(99) @ 400995000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 3 (Reset Data=0x00000000000000000000000000000000) sent to addr 0x00030000
+UVM_INFO ./tests/coralnpu_test_pkg.sv(552) @ 501000000: uvm_test_top [coralnpu_regression_test] Test timed out, but no Co-Simulation mismatches were detected. Assuming PASS.
+UVM_INFO ./tests/coralnpu_test_pkg.sv(567) @ 501000000: uvm_test_top [coralnpu_regression_test] ** UVM TEST PASSED **
+UVM_INFO ./tests/coralnpu_test_pkg.sv(514) @ 501000000: uvm_test_top [coralnpu_regression_test] --- FINISHED TEST: //third_party/riscv-tests:rv32uf-p-fcvt_w ---
+
+UVM_INFO ./tests/coralnpu_test_pkg.sv(436) @ 501000000: uvm_test_top [coralnpu_regression_test] --- STARTING TEST: //third_party/riscv-tests:rv32uf-p-fdiv ---
+UVM_INFO ./tb/coralnpu_tb_top.sv(214) @ 501000000: reporter [TB_TOP] Reset Asserted
+UVM_INFO ./tb/coralnpu_tb_top.sv(217) @ 501045000: reporter [TB_TOP] Reset Deasserted
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 501055000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_pc                         axi_transaction   -     @1178                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30004                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf0                                                 
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    501055000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 501115000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(61) @ 501115000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 1 (PC Data=0x00000000000000000000000000000000) sent to addr 0x00030004
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 501115000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_clk_gate                   axi_transaction   -     @1188                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h1                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    501115000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 501155000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(80) @ 501155000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 2 (ClkGate Data=0x00000000000000000000000000000001) sent to addr 0x00030000
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 501155000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_reset                      axi_transaction   -     @1198                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    501155000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 501195000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(99) @ 501195000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 3 (Reset Data=0x00000000000000000000000000000000) sent to addr 0x00030000
+UVM_INFO ./tests/coralnpu_test_pkg.sv(552) @ 601200000: uvm_test_top [coralnpu_regression_test] Test timed out, but no Co-Simulation mismatches were detected. Assuming PASS.
+UVM_INFO ./tests/coralnpu_test_pkg.sv(567) @ 601200000: uvm_test_top [coralnpu_regression_test] ** UVM TEST PASSED **
+UVM_INFO ./tests/coralnpu_test_pkg.sv(514) @ 601200000: uvm_test_top [coralnpu_regression_test] --- FINISHED TEST: //third_party/riscv-tests:rv32uf-p-fdiv ---
+
+UVM_INFO ./tests/coralnpu_test_pkg.sv(436) @ 601200000: uvm_test_top [coralnpu_regression_test] --- STARTING TEST: //third_party/riscv-tests:rv32uf-p-fmadd ---
+UVM_INFO ./tb/coralnpu_tb_top.sv(214) @ 601200000: reporter [TB_TOP] Reset Asserted
+UVM_INFO ./tb/coralnpu_tb_top.sv(217) @ 601245000: reporter [TB_TOP] Reset Deasserted
+UVM_INFO ./common/cosim/coralnpu_cosim_checker_pkg.sv(368) @ 601255000: uvm_test_top.env.m_cosim_checker [coralnpu_cosim_checker] Initializing Co-Sim for /tmp/uvm_reg_uynevesd/third_party_riscv-tests_rv32uf-p-fmadd.elf
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 601255000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_pc                         axi_transaction   -     @1233                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30004                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf0                                                 
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    601255000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 601315000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(61) @ 601315000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 1 (PC Data=0x00000000000000000000000000000000) sent to addr 0x00030004
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 601315000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_clk_gate                   axi_transaction   -     @1243                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h1                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    601315000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 601355000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(80) @ 601355000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 2 (ClkGate Data=0x00000000000000000000000000000001) sent to addr 0x00030000
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 601355000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_reset                      axi_transaction   -     @1253                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    601355000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 601395000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(99) @ 601395000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 3 (Reset Data=0x00000000000000000000000000000000) sent to addr 0x00030000
+UVM_INFO ./tests/coralnpu_test_pkg.sv(552) @ 701400000: uvm_test_top [coralnpu_regression_test] Test timed out, but no Co-Simulation mismatches were detected. Assuming PASS.
+UVM_INFO ./tests/coralnpu_test_pkg.sv(567) @ 701400000: uvm_test_top [coralnpu_regression_test] ** UVM TEST PASSED **
+UVM_INFO ./tests/coralnpu_test_pkg.sv(514) @ 701400000: uvm_test_top [coralnpu_regression_test] --- FINISHED TEST: //third_party/riscv-tests:rv32uf-p-fmadd ---
+
+UVM_INFO ./tests/coralnpu_test_pkg.sv(436) @ 701400000: uvm_test_top [coralnpu_regression_test] --- STARTING TEST: //third_party/riscv-tests:rv32uf-p-fmin ---
+UVM_INFO ./tb/coralnpu_tb_top.sv(214) @ 701400000: reporter [TB_TOP] Reset Asserted
+UVM_INFO ./tb/coralnpu_tb_top.sv(217) @ 701445000: reporter [TB_TOP] Reset Deasserted
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 701455000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_pc                         axi_transaction   -     @1284                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30004                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf0                                                 
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    701455000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 701515000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(61) @ 701515000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 1 (PC Data=0x00000000000000000000000000000000) sent to addr 0x00030004
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 701515000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_clk_gate                   axi_transaction   -     @1294                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h1                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    701515000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 701555000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(80) @ 701555000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 2 (ClkGate Data=0x00000000000000000000000000000001) sent to addr 0x00030000
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 701555000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_reset                      axi_transaction   -     @1304                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    701555000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 701595000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(99) @ 701595000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 3 (Reset Data=0x00000000000000000000000000000000) sent to addr 0x00030000
+UVM_INFO ./tests/coralnpu_test_pkg.sv(552) @ 801600000: uvm_test_top [coralnpu_regression_test] Test timed out, but no Co-Simulation mismatches were detected. Assuming PASS.
+UVM_INFO ./tests/coralnpu_test_pkg.sv(567) @ 801600000: uvm_test_top [coralnpu_regression_test] ** UVM TEST PASSED **
+UVM_INFO ./tests/coralnpu_test_pkg.sv(514) @ 801600000: uvm_test_top [coralnpu_regression_test] --- FINISHED TEST: //third_party/riscv-tests:rv32uf-p-fmin ---
+
+UVM_INFO ./tests/coralnpu_test_pkg.sv(436) @ 801600000: uvm_test_top [coralnpu_regression_test] --- STARTING TEST: //third_party/riscv-tests:rv32uf-p-ldst ---
+UVM_INFO ./tb/coralnpu_tb_top.sv(214) @ 801600000: reporter [TB_TOP] Reset Asserted
+UVM_INFO ./tb/coralnpu_tb_top.sv(217) @ 801645000: reporter [TB_TOP] Reset Deasserted
+UVM_INFO ./common/cosim/coralnpu_cosim_checker_pkg.sv(368) @ 801655000: uvm_test_top.env.m_cosim_checker [coralnpu_cosim_checker] Initializing Co-Sim for /tmp/uvm_reg_uynevesd/third_party_riscv-tests_rv32uf-p-ldst.elf
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 801655000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_pc                         axi_transaction   -     @1339                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30004                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf0                                                 
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    801655000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 801715000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(61) @ 801715000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 1 (PC Data=0x00000000000000000000000000000000) sent to addr 0x00030004
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 801715000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_clk_gate                   axi_transaction   -     @1349                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h1                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    801715000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 801755000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(80) @ 801755000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 2 (ClkGate Data=0x00000000000000000000000000000001) sent to addr 0x00030000
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 801755000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_reset                      axi_transaction   -     @1359                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    801755000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 801795000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(99) @ 801795000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 3 (Reset Data=0x00000000000000000000000000000000) sent to addr 0x00030000
+UVM_INFO ./tests/coralnpu_test_pkg.sv(552) @ 901800000: uvm_test_top [coralnpu_regression_test] Test timed out, but no Co-Simulation mismatches were detected. Assuming PASS.
+UVM_INFO ./tests/coralnpu_test_pkg.sv(567) @ 901800000: uvm_test_top [coralnpu_regression_test] ** UVM TEST PASSED **
+UVM_INFO ./tests/coralnpu_test_pkg.sv(514) @ 901800000: uvm_test_top [coralnpu_regression_test] --- FINISHED TEST: //third_party/riscv-tests:rv32uf-p-ldst ---
+
+UVM_INFO ./tests/coralnpu_test_pkg.sv(436) @ 901800000: uvm_test_top [coralnpu_regression_test] --- STARTING TEST: //third_party/riscv-tests:rv32uf-p-move ---
+UVM_INFO ./tb/coralnpu_tb_top.sv(214) @ 901800000: reporter [TB_TOP] Reset Asserted
+UVM_INFO ./tb/coralnpu_tb_top.sv(217) @ 901845000: reporter [TB_TOP] Reset Deasserted
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 901855000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_pc                         axi_transaction   -     @1390                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30004                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf0                                                 
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    901855000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 901915000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(61) @ 901915000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 1 (PC Data=0x00000000000000000000000000000000) sent to addr 0x00030004
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 901915000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_clk_gate                   axi_transaction   -     @1400                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h1                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    901915000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 901955000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(80) @ 901955000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 2 (ClkGate Data=0x00000000000000000000000000000001) sent to addr 0x00030000
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(58) @ 901955000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Got transaction: ------------------------------------------------------------------------------------------------------------
+Name                           Type              Size  Value                                                
+------------------------------------------------------------------------------------------------------------
+req_reset                      axi_transaction   -     @1410                                                
+  txn_type                     axi_txn_type_e    2     AXI_WRITE                                            
+  id                           integral          6     'h0                                                  
+  addr                         integral          32    'h30000                                              
+  len                          integral          8     'h0                                                  
+  size                         integral          3     'h2                                                  
+  burst                        axi_burst_type_e  2     AXI_BURST_INCR                                       
+  lock                         integral          1     'hX                                                  
+  cache                        integral          4     'hx                                                  
+  prot                         integral          3     'h0                                                  
+  qos                          integral          4     'hx                                                  
+  region                       integral          4     'hx                                                  
+  data                         da(integral)      1     -                                                    
+    [0]                        integral          128   'h0                                                  
+  strb                         da(integral)      1     -                                                    
+    [0]                        integral          16    'hf                                                  
+  resp                         integral          2     'hX                                                  
+  begin_time                   time              64    901955000                                            
+  depth                        int               32    'd2                                                  
+  parent sequence (name)       string            11    kickoff_seq                                          
+  parent sequence (full name)  string            53    uvm_test_top.env.m_master_agent.sequencer.kickoff_seq
+  sequencer                    string            41    uvm_test_top.env.m_master_agent.sequencer            
+------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ./common/coralnpu_axi_master/coralnpu_axi_master_agent_pkg.sv(67) @ 901995000: uvm_test_top.env.m_master_agent.driver [coralnpu_axi_master_driver] Transaction item_done() called
+UVM_INFO ./tests/coralnpu_test_pkg.sv(99) @ 901995000: uvm_test_top.env.m_master_agent.sequencer@@kickoff_seq [coralnpu_kickoff_write_seq] Kickoff Write 3 (Reset Data=0x00000000000000000000000000000000) sent to addr 0x00030000
+UVM_INFO ./tests/coralnpu_test_pkg.sv(552) @ 1002000000: uvm_test_top [coralnpu_regression_test] Test timed out, but no Co-Simulation mismatches were detected. Assuming PASS.
+UVM_INFO ./tests/coralnpu_test_pkg.sv(567) @ 1002000000: uvm_test_top [coralnpu_regression_test] ** UVM TEST PASSED **
+UVM_INFO ./tests/coralnpu_test_pkg.sv(514) @ 1002000000: uvm_test_top [coralnpu_regression_test] --- FINISHED TEST: //third_party/riscv-tests:rv32uf-p-move ---
+
+UVM_INFO ./tests/coralnpu_test_pkg.sv(520) @ 1002000000: uvm_test_top [coralnpu_regression_test] REGRESSION COMPLETE. Passed: 10/10
+UVM_INFO ./tests/coralnpu_test_pkg.sv(579) @ 1002000000: uvm_test_top [REGRESSION_SUMMARY] All 10 tests passed.
+UVM_INFO /fact_data/softwares/synopsys/vcs/V-2023.12-SP2-4/etc/uvm-1.2/base/uvm_report_catcher.svh(705) @ 1002000000: reporter [UVM/REPORT/CATCHER] 
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0
+
+UVM_INFO /fact_data/softwares/synopsys/vcs/V-2023.12-SP2-4/etc/uvm-1.2/base/uvm_report_server.svh(904) @ 1002000000: reporter [UVM/REPORT/SERVER] 
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :  161
+UVM_WARNING :    0
+UVM_ERROR :    0
+UVM_FATAL :    0
+** Report counts by id
+[REGRESSION_SUMMARY]     1
+[RNTST]     1
+[TB_TOP]    21
+[UVM/RELNOTES]     1
+[UVM/REPORT/CATCHER]     1
+[coralnpu_axi_master_driver]    60
+[coralnpu_cosim_checker]     5
+[coralnpu_kickoff_write_seq]    30
+[coralnpu_regression_test]    41
+
+$finish called from file "/fact_data/softwares/synopsys/vcs/V-2023.12-SP2-4/etc/uvm-1.2/base/uvm_root.svh", line 527.
+$finish at simulation time           1002000000
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 1002000000 ps
+CPU Time:      1.910 seconds;       Data structure size:  32.5Mb
+Tue Jun  9 22:51:35 2026
+--- Simulation Finished ---
+make: Leaving directory '/fact_data/shiruizhao/rvv_benchmark/ax45mpv_rvv/tests/uvm'

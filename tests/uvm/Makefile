@@ -92,6 +92,8 @@ VCS_COMPILE_OPTS = \
 	-y ../../third_party/ax45mpv/andes_ip/kv_core/fpu/hdl \
 	-v ../../third_party/ax45mpv/andes_ip/macro/nds_lib.v
 
+# Additional source files
+KVPU_PIPE_SRC = ../../third_party/ax45mpv/andes_ip/kv_core/vpu/hdl/kv_vpu_pipe.v
 # Add C++ compiler/linker options for MPACT-Sim
 VCS_COMPILE_OPTS += \
     -cpp $(CXX) \
@@ -154,8 +156,7 @@ rtl:
 # Compile the design
 $(SIM_EXEC): $(FILE_LIST) dirs build_mpact_lib rtl
 	@echo "--- Compiling with VCS ---"
-	$(VCS) $(VCS_COMPILE_OPTS) -l $(LOG_DIR)/compile.log -f $(FILE_LIST) $(GENERATED_RTL_SRC)
-	@echo "--- Compilation Finished ---"
+	$(VCS) $(VCS_COMPILE_OPTS) -l $(LOG_DIR)/compile.log -f $(FILE_LIST) $(GENERATED_RTL_SRC) $(KVPU_PIPE_SRC)
 
 compile: $(SIM_EXEC)
 
