@@ -1,0 +1,5 @@
+/tmp/uvm_reg_11xtb4y6/third_party_riscv-tests_rv32uf-p-fadd.elf 000100c0 00000000 100000 NONE //third_party/riscv-tests:rv32uf-p-fadd
+/tmp/uvm_reg_11xtb4y6/third_party_riscv-tests_rv32uf-p-fclass.elf 00010040 00000000 100000 NONE //third_party/riscv-tests:rv32uf-p-fclass
+/tmp/uvm_reg_11xtb4y6/third_party_riscv-tests_rv32uf-p-fcmp.elf 00010100 00000000 100000 NONE //third_party/riscv-tests:rv32uf-p-fcmp
+/tmp/uvm_reg_11xtb4y6/third_party_riscv-tests_rv32uf-p-fcvt.elf 00010040 00000000 100000 NONE //third_party/riscv-tests:rv32uf-p-fcvt
+/tmp/uvm_reg_11xtb4y6/third_party_riscv-tests_rv32uf-p-fcvt_w.elf 00010140 00000000 100000 NONE //third_party/riscv-tests:rv32uf-p-fcvt_w

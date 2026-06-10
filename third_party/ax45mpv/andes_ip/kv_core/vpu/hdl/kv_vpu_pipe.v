@@ -387,6 +387,9 @@ input vpu_reset_n;
 
 wire valu_dispatch_ready;
 wire valu_standby_ready;
+wire [(DLEN - 1):0] valu_vd_wdata_raw;
+wire [DLEN / 8 - 1:0] valu_vd_wmask_raw;
+wire valu_vd_wvalid_raw;
 wire [(DLEN - 1):0] valu_vd_wdata;
 wire [DLEN / 8 - 1:0] valu_vd_wmask;
 wire valu_vd_wvalid;
@@ -397,6 +400,9 @@ wire valu_vxsat_set;
 wire vfmis_dispatch_ready;
 wire [4:0] vfmis_fflags_set;
 wire vfmis_standby_ready;
+wire [(DLEN - 1):0] vfmis_vd_wdata_raw;
+wire [DLEN / 8 - 1:0] vfmis_vd_wmask_raw;
+wire vfmis_vd_wvalid_raw;
 wire [(DLEN - 1):0] vfmis_vd_wdata;
 wire [DLEN / 8 - 1:0] vfmis_vd_wmask;
 wire vfmis_vd_wvalid;
@@ -530,6 +536,15 @@ wire vfdiv_vs1_rvalid;
 wire [(DLEN - 1):0] vfdiv_vs2_rdata;
 wire vfdiv_vs2_rvalid;
 wire vfmis_vd_wready;
+wire [(DLEN - 1):0] vfmis_vs1_rdata_raw;
+wire vfmis_vs1_rlast_raw;
+wire vfmis_vs1_rvalid_raw;
+wire [(DLEN - 1):0] vfmis_vs2_rdata_raw;
+wire vfmis_vs2_rlast_raw;
+wire vfmis_vs2_rvalid_raw;
+wire [(DLEN - 1):0] vfmis_vs3_rdata_raw;
+wire vfmis_vs3_rlast_raw;
+wire vfmis_vs3_rvalid_raw;
 wire [(DLEN - 1):0] vfmis_vs1_rdata;
 wire vfmis_vs1_rlast;
 wire vfmis_vs1_rvalid;
@@ -558,6 +573,15 @@ wire [(DLEN - 1):0] vmac2_vs3_rdata;
 wire vmac2_vs3_rlast;
 wire vmac2_vs3_rvalid;
 wire vmac_vd_wready;
+wire [(DLEN - 1):0] vmac_vs1_rdata_raw;
+wire vmac_vs1_rlast_raw;
+wire vmac_vs1_rvalid_raw;
+wire [(DLEN - 1):0] vmac_vs2_rdata_raw;
+wire vmac_vs2_rlast_raw;
+wire vmac_vs2_rvalid_raw;
+wire [(DLEN - 1):0] vmac_vs3_rdata_raw;
+wire vmac_vs3_rlast_raw;
+wire vmac_vs3_rvalid_raw;
 wire [(DLEN - 1):0] vmac_vs1_rdata;
 wire vmac_vs1_rlast;
 wire vmac_vs1_rvalid;
@@ -1663,18 +1687,18 @@ kv_vconn #(
     .valu_vd_wdata(valu_vd_wdata),
     .valu_vd_wmask(valu_vd_wmask),
     .valu_vd_wlast(nds_unused_valu_vd_wlast),
-    .vmac_vs1_rvalid(vmac_vs1_rvalid),
+    .vmac_vs1_rvalid(vmac_vs1_rvalid_raw),
     .vmac_vs1_rready(vmac_vs1_rready),
-    .vmac_vs1_rdata(vmac_vs1_rdata),
-    .vmac_vs1_rlast(vmac_vs1_rlast),
-    .vmac_vs2_rvalid(vmac_vs2_rvalid),
+    .vmac_vs1_rdata(vmac_vs1_rdata_raw),
+    .vmac_vs1_rlast(vmac_vs1_rlast_raw),
+    .vmac_vs2_rvalid(vmac_vs2_rvalid_raw),
     .vmac_vs2_rready(vmac_vs2_rready),
-    .vmac_vs2_rdata(vmac_vs2_rdata),
-    .vmac_vs2_rlast(vmac_vs2_rlast),
-    .vmac_vs3_rvalid(vmac_vs3_rvalid),
+    .vmac_vs2_rdata(vmac_vs2_rdata_raw),
+    .vmac_vs2_rlast(vmac_vs2_rlast_raw),
+    .vmac_vs3_rvalid(vmac_vs3_rvalid_raw),
     .vmac_vs3_rready(vmac_vs3_rready),
-    .vmac_vs3_rdata(vmac_vs3_rdata),
-    .vmac_vs3_rlast(vmac_vs3_rlast),
+    .vmac_vs3_rdata(vmac_vs3_rdata_raw),
+    .vmac_vs3_rlast(vmac_vs3_rlast_raw),
     .vmac_vd_wvalid(vmac_vd_wvalid),
     .vmac_vd_wready(vmac_vd_wready),
     .vmac_vd_wdata(vmac_vd_wdata),
@@ -1697,18 +1721,18 @@ kv_vconn #(
     .vmac2_vd_wdata(vmac2_vd_wdata),
     .vmac2_vd_wmask(vmac2_vd_wmask),
     .vmac2_vd_wlast(nds_unused_vmac2_vd_wlast),
-    .vfmis_vs1_rvalid(vfmis_vs1_rvalid),
+    .vfmis_vs1_rvalid(vfmis_vs1_rvalid_raw),
     .vfmis_vs1_rready(vfmis_vs1_rready),
-    .vfmis_vs1_rdata(vfmis_vs1_rdata),
-    .vfmis_vs1_rlast(vfmis_vs1_rlast),
-    .vfmis_vs2_rvalid(vfmis_vs2_rvalid),
+    .vfmis_vs1_rdata(vfmis_vs1_rdata_raw),
+    .vfmis_vs1_rlast(vfmis_vs1_rlast_raw),
+    .vfmis_vs2_rvalid(vfmis_vs2_rvalid_raw),
     .vfmis_vs2_rready(vfmis_vs2_rready),
-    .vfmis_vs2_rdata(vfmis_vs2_rdata),
-    .vfmis_vs2_rlast(vfmis_vs2_rlast),
-    .vfmis_vs3_rvalid(vfmis_vs3_rvalid),
+    .vfmis_vs2_rdata(vfmis_vs2_rdata_raw),
+    .vfmis_vs2_rlast(vfmis_vs2_rlast_raw),
+    .vfmis_vs3_rvalid(vfmis_vs3_rvalid_raw),
     .vfmis_vs3_rready(vfmis_vs3_rready),
-    .vfmis_vs3_rdata(vfmis_vs3_rdata),
-    .vfmis_vs3_rlast(vfmis_vs3_rlast),
+    .vfmis_vs3_rdata(vfmis_vs3_rdata_raw),
+    .vfmis_vs3_rlast(vfmis_vs3_rlast_raw),
     .vfmis_vd_wvalid(vfmis_vd_wvalid),
     .vfmis_vd_wdata(vfmis_vd_wdata),
     .vfmis_vd_wmask(vfmis_vd_wmask),
@@ -2127,6 +2151,112 @@ assign valu_vs3_rlast  = valu_vs3_rlast_pipe;
 assign valu_vs3_rvalid = valu_vs3_rvalid_pipe;
 
 // =========================================================================
+// Pipeline registers: VFMI source operands (3 × 512-bit read data)
+// =========================================================================
+reg [(DLEN - 1):0] vfmis_vs1_rdata_pipe;
+reg                vfmis_vs1_rlast_pipe;
+reg                vfmis_vs1_rvalid_pipe;
+reg [(DLEN - 1):0] vfmis_vs2_rdata_pipe;
+reg                vfmis_vs2_rlast_pipe;
+reg                vfmis_vs2_rvalid_pipe;
+reg [(DLEN - 1):0] vfmis_vs3_rdata_pipe;
+reg                vfmis_vs3_rlast_pipe;
+reg                vfmis_vs3_rvalid_pipe;
+
+always_ff @(posedge vpu_clk or negedge vpu_reset_n) begin
+    if (!vpu_reset_n) begin
+        vfmis_vs1_rvalid_pipe <= 1'b0;
+        vfmis_vs2_rvalid_pipe <= 1'b0;
+        vfmis_vs3_rvalid_pipe <= 1'b0;
+    end else begin
+        if (vfmis_vs1_rvalid_raw && vfmis_vs1_rready) begin
+            vfmis_vs1_rvalid_pipe <= 1'b1;
+            vfmis_vs1_rdata_pipe  <= vfmis_vs1_rdata_raw;
+            vfmis_vs1_rlast_pipe  <= vfmis_vs1_rlast_raw;
+        end else if (vfmis_vs1_rvalid_pipe && vfmis_vs1_rready) begin
+            vfmis_vs1_rvalid_pipe <= 1'b0;
+        end
+        if (vfmis_vs2_rvalid_raw && vfmis_vs2_rready) begin
+            vfmis_vs2_rvalid_pipe <= 1'b1;
+            vfmis_vs2_rdata_pipe  <= vfmis_vs2_rdata_raw;
+            vfmis_vs2_rlast_pipe  <= vfmis_vs2_rlast_raw;
+        end else if (vfmis_vs2_rvalid_pipe && vfmis_vs2_rready) begin
+            vfmis_vs2_rvalid_pipe <= 1'b0;
+        end
+        if (vfmis_vs3_rvalid_raw && vfmis_vs3_rready) begin
+            vfmis_vs3_rvalid_pipe <= 1'b1;
+            vfmis_vs3_rdata_pipe  <= vfmis_vs3_rdata_raw;
+            vfmis_vs3_rlast_pipe  <= vfmis_vs3_rlast_raw;
+        end else if (vfmis_vs3_rvalid_pipe && vfmis_vs3_rready) begin
+            vfmis_vs3_rvalid_pipe <= 1'b0;
+        end
+    end
+end
+
+assign vfmis_vs1_rdata  = vfmis_vs1_rdata_pipe;
+assign vfmis_vs1_rlast  = vfmis_vs1_rlast_pipe;
+assign vfmis_vs1_rvalid = vfmis_vs1_rvalid_pipe;
+assign vfmis_vs2_rdata  = vfmis_vs2_rdata_pipe;
+assign vfmis_vs2_rlast  = vfmis_vs2_rlast_pipe;
+assign vfmis_vs2_rvalid = vfmis_vs2_rvalid_pipe;
+assign vfmis_vs3_rdata  = vfmis_vs3_rdata_pipe;
+assign vfmis_vs3_rlast  = vfmis_vs3_rlast_pipe;
+assign vfmis_vs3_rvalid = vfmis_vs3_rvalid_pipe;
+
+// =========================================================================
+// Pipeline registers: VMAC source operands (3 × 512-bit read data)
+// =========================================================================
+reg [(DLEN - 1):0] vmac_vs1_rdata_pipe;
+reg                vmac_vs1_rlast_pipe;
+reg                vmac_vs1_rvalid_pipe;
+reg [(DLEN - 1):0] vmac_vs2_rdata_pipe;
+reg                vmac_vs2_rlast_pipe;
+reg                vmac_vs2_rvalid_pipe;
+reg [(DLEN - 1):0] vmac_vs3_rdata_pipe;
+reg                vmac_vs3_rlast_pipe;
+reg                vmac_vs3_rvalid_pipe;
+
+always_ff @(posedge vpu_clk or negedge vpu_reset_n) begin
+    if (!vpu_reset_n) begin
+        vmac_vs1_rvalid_pipe <= 1'b0;
+        vmac_vs2_rvalid_pipe <= 1'b0;
+        vmac_vs3_rvalid_pipe <= 1'b0;
+    end else begin
+        if (vmac_vs1_rvalid_raw && vmac_vs1_rready) begin
+            vmac_vs1_rvalid_pipe <= 1'b1;
+            vmac_vs1_rdata_pipe  <= vmac_vs1_rdata_raw;
+            vmac_vs1_rlast_pipe  <= vmac_vs1_rlast_raw;
+        end else if (vmac_vs1_rvalid_pipe && vmac_vs1_rready) begin
+            vmac_vs1_rvalid_pipe <= 1'b0;
+        end
+        if (vmac_vs2_rvalid_raw && vmac_vs2_rready) begin
+            vmac_vs2_rvalid_pipe <= 1'b1;
+            vmac_vs2_rdata_pipe  <= vmac_vs2_rdata_raw;
+            vmac_vs2_rlast_pipe  <= vmac_vs2_rlast_raw;
+        end else if (vmac_vs2_rvalid_pipe && vmac_vs2_rready) begin
+            vmac_vs2_rvalid_pipe <= 1'b0;
+        end
+        if (vmac_vs3_rvalid_raw && vmac_vs3_rready) begin
+            vmac_vs3_rvalid_pipe <= 1'b1;
+            vmac_vs3_rdata_pipe  <= vmac_vs3_rdata_raw;
+            vmac_vs3_rlast_pipe  <= vmac_vs3_rlast_raw;
+        end else if (vmac_vs3_rvalid_pipe && vmac_vs3_rready) begin
+            vmac_vs3_rvalid_pipe <= 1'b0;
+        end
+    end
+end
+
+assign vmac_vs1_rdata  = vmac_vs1_rdata_pipe;
+assign vmac_vs1_rlast  = vmac_vs1_rlast_pipe;
+assign vmac_vs1_rvalid = vmac_vs1_rvalid_pipe;
+assign vmac_vs2_rdata  = vmac_vs2_rdata_pipe;
+assign vmac_vs2_rlast  = vmac_vs2_rlast_pipe;
+assign vmac_vs2_rvalid = vmac_vs2_rvalid_pipe;
+assign vmac_vs3_rdata  = vmac_vs3_rdata_pipe;
+assign vmac_vs3_rlast  = vmac_vs3_rlast_pipe;
+assign vmac_vs3_rvalid = vmac_vs3_rvalid_pipe;
+
+// =========================================================================
 kv_vpu_lane_top #(
     .DLEN(DLEN),
     .ELEN(ELEN),
@@ -2155,10 +2285,10 @@ kv_vpu_lane_top #(
     .valu_dispatch_ready(valu_dispatch_ready),
     .valu_dispatch_v0t(v0t),
     .valu_dispatch_valid(valu_dispatch_valid),
-    .valu_vd_wdata(valu_vd_wdata),
-    .valu_vd_wmask(valu_vd_wmask),
+    .valu_vd_wdata(valu_vd_wdata_raw),
+    .valu_vd_wmask(valu_vd_wmask_raw),
     .valu_vd_wready(valu_vd_wready),
-    .valu_vd_wvalid(valu_vd_wvalid),
+    .valu_vd_wvalid(valu_vd_wvalid_raw),
     .valu_vs1_rdata(valu_vs1_rdata),
     .valu_vs1_rlast(valu_vs1_rlast),
     .valu_vs1_rready(valu_vs1_rready),
@@ -2182,10 +2312,10 @@ kv_vpu_lane_top #(
     .vfmis_dispatch_ready(vfmis_dispatch_ready),
     .vfmis_dispatch_v0t(v0t),
     .vfmis_dispatch_valid(vfmis_dispatch_valid),
-    .vfmis_vd_wdata(vfmis_vd_wdata),
-    .vfmis_vd_wmask(vfmis_vd_wmask),
+    .vfmis_vd_wdata(vfmis_vd_wdata_raw),
+    .vfmis_vd_wmask(vfmis_vd_wmask_raw),
     .vfmis_vd_wready(vfmis_vd_wready),
-    .vfmis_vd_wvalid(vfmis_vd_wvalid),
+    .vfmis_vd_wvalid(vfmis_vd_wvalid_raw),
     .vfmis_vs1_rdata(vfmis_vs1_rdata),
     .vfmis_vs1_rready(vfmis_vs1_rready),
     .vfmis_vs1_rvalid(vfmis_vs1_rvalid),
@@ -2259,6 +2389,48 @@ kv_vpu_lane_top #(
     .vpu_vmac_clk(vpu_vmac_clk),
     .vpu_reset_n(vpu_reset_n)
 );
+
+// =========================================================================
+// Pipeline registers: ALU + VFMI writeback data (2 × 512-bit)
+// Breaks combinational path: FU result → kv_vconn → VRF write port
+// =========================================================================
+reg [(DLEN - 1):0] valu_vd_wdata_pipe;
+reg [DLEN / 8 - 1:0] valu_vd_wmask_pipe;
+reg                valu_vd_wvalid_pipe;
+reg [(DLEN - 1):0] vfmis_vd_wdata_pipe;
+reg [DLEN / 8 - 1:0] vfmis_vd_wmask_pipe;
+reg                vfmis_vd_wvalid_pipe;
+
+always_ff @(posedge vpu_clk or negedge vpu_reset_n) begin
+    if (!vpu_reset_n) begin
+        valu_vd_wvalid_pipe  <= 1'b0;
+        vfmis_vd_wvalid_pipe <= 1'b0;
+    end else begin
+        if (valu_vd_wvalid_raw && valu_vd_wready) begin
+            valu_vd_wvalid_pipe <= 1'b1;
+            valu_vd_wdata_pipe  <= valu_vd_wdata_raw;
+            valu_vd_wmask_pipe  <= valu_vd_wmask_raw;
+        end else if (valu_vd_wvalid_pipe && valu_vd_wready) begin
+            valu_vd_wvalid_pipe <= 1'b0;
+        end
+        if (vfmis_vd_wvalid_raw && vfmis_vd_wready) begin
+            vfmis_vd_wvalid_pipe <= 1'b1;
+            vfmis_vd_wdata_pipe  <= vfmis_vd_wdata_raw;
+            vfmis_vd_wmask_pipe  <= vfmis_vd_wmask_raw;
+        end else if (vfmis_vd_wvalid_pipe && vfmis_vd_wready) begin
+            vfmis_vd_wvalid_pipe <= 1'b0;
+        end
+    end
+end
+
+assign valu_vd_wdata   = valu_vd_wdata_pipe;
+assign valu_vd_wmask   = valu_vd_wmask_pipe;
+assign valu_vd_wvalid  = valu_vd_wvalid_pipe;
+assign vfmis_vd_wdata  = vfmis_vd_wdata_pipe;
+assign vfmis_vd_wmask  = vfmis_vd_wmask_pipe;
+assign vfmis_vd_wvalid = vfmis_vd_wvalid_pipe;
+
+// =========================================================================
 kv_vdiv #(
     .DLEN(DLEN),
     .ELEN(ELEN),
