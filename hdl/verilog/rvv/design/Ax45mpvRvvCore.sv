@@ -15,6 +15,19 @@
 // Ax45mpvRvvCore — adapter that replaces CoralNPU's RVV backend with Andes
 // AX45MPV kv_vpu (VLEN=DLEN=512).  The RvvFrontEnd is kept; RVVCmd signals
 // are translated into the flat vpu_req_* interface that kv_vpu consumes.
+//
+// ---- Design defines (for synthesis) ----
+`define VLEN    512
+`define VLENB   64
+`define VLENH   32
+`define VLENW   16
+`define DLEN    512
+`define FLEN    32
+`define XLEN    32
+`define VSTART_WIDTH  9
+`define VL_WIDTH     10
+// ---- End defines ----
+//
 // NOTE: include files (rvv_backend_define.svh, rvv_backend.svh) are inlined
 // into the monolithic RvvCoreMiniAxi.sv by Chisel emit-verilog. They are NOT
 // included here to avoid Verilator include-path resolution errors.
