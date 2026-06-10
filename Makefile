@@ -123,7 +123,49 @@ lint: ## Run Verilator lint on RVV core
 format: ## Format BUILD and .bzl files
 	buildifier -r .
 
-.PHONY: filelist
-filelist: ## Regenerate filelist.f
-	@echo "See filelist.f in repo root"
-	@cat filelist.f
+.PHONY: filelist filelist_syn
+
+FILES := $(wildcard third_party/ax45mpv/andes_ip/kv_core/vpu/hdl/*.v)
+FILES += $(wildcard third_party/ax45mpv/andes_ip/kv_core/ucore/hdl/*.v)
+FILES += $(wildcard third_party/ax45mpv/andes_ip/kv_core/macro/hdl/*.v)
+FILES += $(wildcard third_party/ax45mpv/andes_ip/kv_core/ace/hdl/*.v)
+FILES += $(wildcard third_party/ax45mpv/andes_ip/kv_core/biu/hdl/*.v)
+FILES += $(wildcard third_party/ax45mpv/andes_ip/kv_core/tilelink/hdl/*.v)
+FILES += $(wildcard third_party/ax45mpv/andes_ip/kv_core/fpu/hdl/*.v)
+FILES += $(wildcard third_party/ax45mpv/andes_ip/macro/nds_lib.v)
+FILES += $(wildcard hdl/verilog/rvv/inc/*.svh)
+MONOLITHIC := bazel-bin/hdl/chisel/src/coralnpu/RvvCoreMiniAxi.sv
+
+filelist_syn: chisel-rvv filelist_syn.f
+	@echo "Generated filelist_syn.f"
+
+filelist_syn.f: $(MONOLITHIC)
+	@echo "# AX45MPV RVV Core — Synthesis Filelist" > $@
+	@echo "# Top: RvvCoreMiniAxi | VLEN=DLEN=512 | Target: 2GHz" >> $@
+	@echo "# Generated: $$(date)" >> $@
+	@echo "" >> $@
+	@echo "+define+USE_GENERIC" >> $@
+	@echo "+define+VLEN_512" >> $@
+	@echo "+define+ZVE32F_ON" >> $@
+	@echo "+define+VLEN=512" >> $@
+	@echo "+define+VLENB=64" >> $@
+	@echo "+define+VLENH=32" >> $@
+	@echo "+define+VLENW=16" >> $@
+	@echo "+define+DLEN=512" >> $@
+	@echo "+define+FLEN=32" >> $@
+	@echo "+define+XLEN=32" >> $@
+	@echo "" >> $@
+	@echo "+incdir+third_party/ax45mpv/andes_ip/kv_core/top/hdl" >> $@
+	@echo "+incdir+third_party/ax45mpv/andes_ip/kv_core/vpu/hdl" >> $@
+	@echo "+incdir+third_party/ax45mpv/andes_ip/kv_core/ucore/hdl" >> $@
+	@echo "+incdir+third_party/ax45mpv/andes_ip/kv_core/macro/hdl" >> $@
+	@echo "+incdir+third_party/ax45mpv/andes_ip/macro" >> $@
+	@echo "+incdir+hdl/verilog/rvv/inc" >> $@
+	@echo "" >> $@
+	@echo "# ---- Top-level RTL ----" >> $@
+	@echo "$(MONOLITHIC)" >> $@
+	@echo "" >> $@
+	@echo "# ---- Donor RTL ($(words $(FILES)) files) ----" >> $@
+	@for f in $(FILES); do echo "$$f" >> $@; done
+filelist: filelist_syn
+	@cat filelist_syn.f
